@@ -11,7 +11,12 @@ app.use(bodyParser.json());
 // parse requests of content-type: application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/', commentsRouter);
+app.use((req, res, next)=> {
+  console.log(req.method, req.url, req.body);
+  next();
+})
+
+app.use('/api/', commentsRouter);
 
 // simple route
 app.get("/", (req, res) => {

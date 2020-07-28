@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Comment } from '../../models/Comment';
+import { CommentService } from '../../services/comment.service';
+
 
 @Component({
   selector: 'app-comments-table',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentsTableComponent implements OnInit {
 
-  constructor() { }
+  displayedColumns: string[] = ['id', 'comment', 'userId'];
+  dataSource = [];
+
+  constructor(private commentService: CommentService) { }
 
   ngOnInit(): void {
+      this.commentService.getComments(8).subscribe(comments => this.dataSource = comments);
   }
 
 }

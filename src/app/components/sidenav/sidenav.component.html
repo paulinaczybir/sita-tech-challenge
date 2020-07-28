@@ -1,1 +1,9 @@
-<p>sidenav works!</p>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <app-flight></app-flight>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-comments-table></app-comments-table>
+    <app-new-comment-form></app-new-comment-form>
+  </mat-drawer-content>
+</mat-drawer-container>

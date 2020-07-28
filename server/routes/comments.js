@@ -13,8 +13,12 @@ router.get("/", function(req, res, next) {
 
 
 
-//GET one comment by id
-router.get("/:id", function(req, res) {
+//GET comments by flightId
+router.get("/:flightId", function(req, res) {
+  db(`SELECT * FROM comments WHERE flight_id=${req.params.flightId};`)
+  .then(results => {
+    res.send(results.data);
+  })
 
   console.log("router get test");
   
@@ -23,7 +27,8 @@ router.get("/:id", function(req, res) {
 
 //INSERT comment
 router.post("/", function(req, res, next) {
-  db(`INSERT INTO comments (flight_id, comment, date, user_id, tags) VALUES (${req.body.flight_id}, '${req.body.comment}', '${req.body.date}', ${req.body.user_id}, '${req.body.tags}' )`)
+  // console.log("req ", req);
+  db(`INSERT INTO comments (flight_id, comment, date, user_id, tags) VALUES (${req.body.flightId}, '${req.body.comment}', '${req.body.date}', ${req.body.userId}, '${req.body.tags}' )`)
   .then(results => {
     res.send({message: "ok"});
   })
