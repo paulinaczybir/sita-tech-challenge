@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
 
 
 import { SidenavComponent } from './components/sidenav/sidenav.component';
@@ -36,6 +37,7 @@ import { NewCommentFormComponent } from './components/new-comment-form/new-comme
     MatButtonModule,
     MatTableModule,
     MatSidenavModule,
+    MatListModule,
     HttpClientModule
   ],
   providers: [],

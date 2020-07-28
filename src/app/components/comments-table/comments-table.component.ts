@@ -16,7 +16,7 @@ export class CommentsTableComponent implements OnInit {
   constructor(private commentService: CommentService) { }
 
   ngOnInit(): void {
-      this.commentService.getComments(8).subscribe(comments => this.dataSource = comments);
+      this.commentService.getComments(1).subscribe(comments => this.dataSource = comments);
   }
 
 }

@@ -20,11 +20,11 @@ export class CommentService {
   constructor(private http: HttpClient) { }
 
   getComments(flightId: number): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`/api/${flightId}`);
+    return this.http.get<Comment[]>(`/api/comments/${flightId}`);
   }
 
   addComment(comment: Comment): Observable<Comment> {
-    return this.http.post<Comment>('/api/', comment);
+    return this.http.post<Comment>('/api/comments', comment);
   }
 
 }

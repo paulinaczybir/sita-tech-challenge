@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const commentsRouter = require('./server/routes/comments');
+const flightsRouter = require('./server/routes/flights');
 
 const app = express();
 
@@ -16,7 +17,8 @@ app.use((req, res, next)=> {
   next();
 })
 
-app.use('/api/', commentsRouter);
+app.use('/api/comments', commentsRouter);
+app.use('/api/flights', commentsRouter);
 
 // simple route
 app.get("/", (req, res) => {

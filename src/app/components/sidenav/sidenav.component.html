@@ -1,6 +1,8 @@
 <mat-drawer-container class="example-container">
   <mat-drawer mode="side" opened>
-    <app-flight></app-flight>
+    <mat-list role="list">
+      <app-flight *ngFor="let flight of flights" [flight]="flight"></app-flight>
+    </mat-list>
   </mat-drawer>
   <mat-drawer-content>
     <app-comments-table></app-comments-table>

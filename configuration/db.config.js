@@ -26,8 +26,17 @@ connection.connect(error => {
 let sql = [
   "DROP TABLE if exists comments; ",
   "DROP TABLE if exists flights; ",
-  "CREATE TABLE flights (id int, destination text null, PRIMARY KEY(id));",
-  "CREATE TABLE comments (id int auto_increment, flight_id int null, comment text null, date text null, user_id int null, tags text null, FOREIGN KEY (flight_id) REFERENCES flights(id) ON DELETE CASCADE, PRIMARY KEY(id)); "  
+  "CREATE TABLE flights (id int auto_increment, origin text null, destination text null, PRIMARY KEY(id));",
+  "CREATE TABLE comments (id int auto_increment, flightId int null, comment text null, date text null, userId int null, FOREIGN KEY (flightId) REFERENCES flights(id) ON DELETE CASCADE, PRIMARY KEY(id)); ",
+  "INSERT INTO flights (origin, destination) VALUES ('Barcelona', 'Berlin')",
+  "INSERT INTO flights (origin, destination) VALUES ('Berlin', 'Barcelona')",
+  "INSERT INTO flights (origin, destination) VALUES ('Madrid', 'Rome')",
+  "INSERT INTO flights (origin, destination) VALUES ('Rome', 'Madrid')",
+  "INSERT INTO comments (flightId, comment, date, userId) VALUES (1, 'Great service.', '15/07/2020', 123)",
+  "INSERT INTO comments (flightId, comment, date, userId) VALUES (1, 'The service could be better.', '18/07/2020', 123)",
+  "INSERT INTO comments (flightId, comment, date, userId) VALUES (2, 'Great flight.', '24/07/2020', 123)",
+  "INSERT INTO comments (flightId, comment, date, userId) VALUES (2, 'Flight was delayed.', '29/07/2020', 123)",
+  "INSERT INTO comments (flightId, comment, date, userId) VALUES (3, 'Happy journey.', '15/07/2020', 123)"
 ];
 
 sql.forEach(e => { 
