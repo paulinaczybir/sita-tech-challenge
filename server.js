@@ -18,7 +18,7 @@ app.use((req, res, next)=> {
 })
 
 app.use('/api/comments', commentsRouter);
-app.use('/api/flights', commentsRouter);
+app.use('/api/flights', flightsRouter);
 
 // simple route
 app.get("/", (req, res) => {

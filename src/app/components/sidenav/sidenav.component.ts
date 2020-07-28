@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Flight } from '../../models/Flight';
+import { FlightService } from '../../services/flight.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -9,12 +10,13 @@ import { Flight } from '../../models/Flight';
 export class SidenavComponent implements OnInit {
 
 
-  flights: Flight[] = [{id: 1, origin: "Bhag", destination: "jfhsg"}];
+  flights: Flight[] = [];
 
 
-  constructor() { }
+  constructor(private flightService: FlightService) { }
 
   ngOnInit(): void {
+    this.flightService.getFlights().subscribe(flights => this.flights = flights);
   }
 
 }
