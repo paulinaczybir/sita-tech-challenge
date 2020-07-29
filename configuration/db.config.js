@@ -1,10 +1,16 @@
+require("dotenv").config();
 const mysql = require("mysql");
 
+const DB_HOST = process.env.DB_HOST;
+const DB_USER = process.env.DB_USER;
+const DB_PASS = process.env.DB_PASS;
+const DB_NAME = process.env.DB_NAME;
+
 dbConfig = {
-  HOST: "localhost",
-  USER: "root",
-  PASSWORD: "arbuz",
-  DB: "sita_flights"
+  HOST: DB_HOST,
+  USER: DB_USER,
+  PASSWORD: DB_PASS,
+  DB: DB_NAME 
 };
 
 
@@ -34,9 +40,13 @@ let sql = [
   "INSERT INTO flights (origin, destination) VALUES ('Rome', 'Madrid')",
   "INSERT INTO comments (flightId, comment, date, userId) VALUES (1, 'Great service.', '15/07/2020', 123)",
   "INSERT INTO comments (flightId, comment, date, userId) VALUES (1, 'The service could be better.', '18/07/2020', 123)",
+  "INSERT INTO comments (flightId, comment, date, userId) VALUES (2, 'The flight was great, no troubles at all.', '29/07/2020', 123)",
   "INSERT INTO comments (flightId, comment, date, userId) VALUES (2, 'Great flight.', '24/07/2020', 123)",
   "INSERT INTO comments (flightId, comment, date, userId) VALUES (2, 'Flight was delayed.', '29/07/2020', 123)",
-  "INSERT INTO comments (flightId, comment, date, userId) VALUES (3, 'Happy journey.', '15/07/2020', 123)"
+  "INSERT INTO comments (flightId, comment, date, userId) VALUES (3, 'Happy journey.', '15/07/2020', 123)",
+  "INSERT INTO comments (flightId, comment, date, userId) VALUES (3, 'Amazing crew!', '19/07/2020', 123)",
+  "INSERT INTO comments (flightId, comment, date, userId) VALUES (4, 'Nice crew.', '16/06/2020', 123)",
+  "INSERT INTO comments (flightId, comment, date, userId) VALUES (4, 'The service was rude, we are not happy with the journey.', '24/06/2020', 123)"
 ];
 
 sql.forEach(e => { 

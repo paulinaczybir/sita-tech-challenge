@@ -1,4 +1,4 @@
-//require("dotenv").config();
+require("dotenv").config();
 const mysql = require("mysql");
 
 module.exports = async function db(query) {
@@ -7,10 +7,10 @@ module.exports = async function db(query) {
     error: null
   };
   let promise = await new Promise((resolve, reject) => {
-    const DB_HOST = "localhost"; //process.env.DB_HOST;
-    const DB_USER = "root"; //process.env.DB_USER;
-    const DB_PASS = "arbuz"; //process.env.DB_PASS;
-    const DB_NAME = "sita_flights"; //process.env.DB_NAME;
+    const DB_HOST = process.env.DB_HOST;
+    const DB_USER = process.env.DB_USER;
+    const DB_PASS = process.env.DB_PASS;
+    const DB_NAME = process.env.DB_NAME;
 
     const con = mysql.createConnection({
       host: DB_HOST,
