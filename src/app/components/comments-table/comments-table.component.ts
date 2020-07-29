@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Comment } from '../../models/Comment';
 import { CommentService } from '../../services/comment.service';
 
@@ -8,15 +8,18 @@ import { CommentService } from '../../services/comment.service';
   templateUrl: './comments-table.component.html',
   styleUrls: ['./comments-table.component.css']
 })
-export class CommentsTableComponent implements OnInit {
+export class CommentsTableComponent implements OnChanges {
 
   displayedColumns: string[] = ['id', 'comment', 'userId'];
   dataSource = [];
 
+  @Input() currentFlightId: number;
+
   constructor(private commentService: CommentService) { }
 
-  ngOnInit(): void {
-      this.commentService.getComments(1).subscribe(comments => this.dataSource = comments);
+
+  ngOnChanges(): void {
+      this.commentService.getComments(this.currentFlightId).subscribe(comments => this.dataSource = comments);
   }
 
 }

@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CommentService } from '../../services/comment.service';
 
 import { Comment } from '../../models/Comment';
 import { NgForm } from '@angular/forms';
+
+import * as moment from 'moment';
 
 
 
@@ -14,6 +16,7 @@ import { NgForm } from '@angular/forms';
 export class NewCommentFormComponent implements OnInit {
 
   comment: string;
+  @Input() currentFlightId: number;
 
   constructor(private commentService: CommentService) { }
 
@@ -27,11 +30,11 @@ export class NewCommentFormComponent implements OnInit {
 
   onSubmit(myForm: NgForm) {
     const comment = {
-      id: 3,
-      flightId: 8,
+      id: null,
+      flightId: this.currentFlightId,
       comment: this.comment,
-      date: '17/07/2020',
-      userId: 34
+      date: moment().format('DD/MM/YYYY'),
+      userId: 123
     };
 
     console.log('submit clicked');
