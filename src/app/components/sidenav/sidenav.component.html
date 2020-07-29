@@ -1,11 +1,12 @@
 <mat-drawer-container class="example-container">
   <mat-drawer mode="side" opened>
     <mat-list role="list">
-      <app-flight *ngFor="let flight of flights" [flight]="flight" (click)="onClick(flight.id)"></app-flight>
+      <app-flight *ngFor="let flight of flights" [flight]="flight" (click)="onClick(flight)"></app-flight>
     </mat-list>
   </mat-drawer>
-  <mat-drawer-content>
-    <app-comments-table [currentFlightId]="currentFlightId"></app-comments-table>
-    <app-new-comment-form [currentFlightId]="currentFlightId"></app-new-comment-form>
+  <mat-drawer-content *ngIf="currentFlight != null">
+    <h1>{{ currentFlight.origin }}-{{ currentFlight.destination }}</h1>
+    <app-comments-table [currentFlightId]="currentFlight.id"></app-comments-table>
+    <app-new-comment-form [currentFlightId]="currentFlight.id"></app-new-comment-form>
   </mat-drawer-content>
 </mat-drawer-container>

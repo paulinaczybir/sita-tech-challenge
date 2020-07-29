@@ -11,18 +11,21 @@ export class SidenavComponent implements OnInit {
 
 
   flights: Flight[] = [];
-  currentFlightId: number = 1;
+  currentFlight: Flight = null;
 
 
   constructor(private flightService: FlightService) { }
 
   ngOnInit(): void {
-    this.flightService.getFlights().subscribe(flights => this.flights = flights);
+    this.flightService.getFlights().subscribe(flights => {
+      this.flights = flights;
+      this.currentFlight = flights[0];
+    });
   }
 
-  onClick(flightId: number): void {
-    this.currentFlightId = flightId;
-    console.log('current id', this.currentFlightId);
+  onClick(flight: Flight): void {
+    this.currentFlight = flight;
+    console.log('current id', this.currentFlight.id);
   }
 
 }
